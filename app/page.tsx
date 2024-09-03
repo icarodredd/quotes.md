@@ -2,7 +2,7 @@ import obsilogo from "@/public/obsidianlogo.png";
 import Image from "next/image";
 import Layout from "@/components/Layout";
 
-export default function Home() {
+export default async function Home() {
   return (
     <Layout>
       <section>
