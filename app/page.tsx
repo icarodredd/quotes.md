@@ -1,12 +1,10 @@
 import obsilogo from "@/public/obsidianlogo.png";
 import Image from "next/image";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Layout from "@/components/Layout";
 
 export default function Home() {
   return (
-    <>
-      <Header />
+    <Layout>
       <section>
         <h1 className="text-4xl text-purple text-center">
           Bring highlighted texts from your e-book <br /> directly to obsidian.
@@ -15,7 +13,6 @@ export default function Home() {
           <Image src={obsilogo} alt="obsidian logo" />
         </div>
       </section>
-      <Footer />
-    </>
+    </Layout>
   );
 }
