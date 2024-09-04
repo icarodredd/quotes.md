@@ -10,7 +10,6 @@ async function Header() {
     <header className="flex justify-between p-4 mb-4">
       <h1 className="text-4xl text-purple">quotes.md</h1>
       <div className="gap-4 flex">
-        <></>
         {session === null ? (
           <SignIn />
         ) : (
