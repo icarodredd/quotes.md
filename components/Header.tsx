@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { Button } from "./ui/button";
 import { auth } from "@/auth";
-import Link from "next/link";
+import SignIn from "./SignIn";
+import SignOut from "./SignOut";
 
 async function Header() {
   const session = await auth();
@@ -12,14 +12,10 @@ async function Header() {
       <div className="gap-4 flex">
         <></>
         {session === null ? (
-          <Link href={"/api/auth/signin"}>
-            <Button className="bg-purple text-gray">Login</Button>
-          </Link>
+          <SignIn />
         ) : (
           <>
-            <Link href={"api/auth/signout"}>
-              <Button className="bg-purple text-gray">Sign Out</Button>
-            </Link>
+            <SignOut />
             <Image
               className="rounded-full"
               width={40}
