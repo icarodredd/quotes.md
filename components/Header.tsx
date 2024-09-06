@@ -2,14 +2,13 @@ import Image from "next/image";
 import { auth } from "@/auth";
 import SignIn from "./SignIn";
 import SignOut from "./SignOut";
-import { Button } from "./ui/button";
 
 async function Header() {
   const session = await auth();
 
   return (
     <header className="flex justify-between p-4 mb-4">
-      <h1 className="text-4xl text-purple">quotes.md</h1>
+      <h1 className="text-4xl">quotes.md</h1>
       <div className="gap-4 flex">
         {session === null ? (
           <SignIn />
