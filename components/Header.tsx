@@ -2,6 +2,7 @@ import Image from "next/image";
 import { auth } from "@/auth";
 import SignIn from "./SignIn";
 import SignOut from "./SignOut";
+import { Button } from "./ui/button";
 
 async function Header() {
   const session = await auth();
