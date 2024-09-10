@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { auth } from "@/auth";
+import { auth, handlers } from "@/auth";
 import SignIn from "./SignIn";
 import SignOut from "./SignOut";
 

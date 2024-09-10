@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Card,
   CardContent,
@@ -11,7 +9,7 @@ import Image from "next/image";
 import docicon from "@/public/Vectordoc.png";
 import { Button } from "@/components/ui/button";
 
-function DocumentsCard() {
+async function DocumentsCard() {
   return (
     <Card className="max-w-4xl">
       <CardHeader>
