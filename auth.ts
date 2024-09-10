@@ -14,14 +14,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
-    async session({ token, session }) {
-      if (token.sub && session.user) {
-        session.user.id = token.sub;
-      }
-      return session;
+    async session({ session, token, user }) {
+      return { ...session, token: token };
     },
     async jwt({ token, user, profile }) {
-      console.log({ token });
       return token;
     },
   },

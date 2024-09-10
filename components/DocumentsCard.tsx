@@ -8,8 +8,17 @@ import {
 import Image from "next/image";
 import docicon from "@/public/Vectordoc.png";
 import { Button } from "@/components/ui/button";
+import { auth } from "@/auth";
 
 async function DocumentsCard() {
+  const session = await auth();
+
+  const files = await fetch("https://www.googleapis.com/drive/v3/files", {
+    method: "GET",
+  }).then((res) => res.json());
+
+  console.log(files);
+
   return (
     <Card className="max-w-4xl">
       <CardHeader>
