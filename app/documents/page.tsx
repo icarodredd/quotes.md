@@ -1,14 +1,14 @@
-import DocumentsCard from "@/components/DocumentsCard";
+import Documents from "@/components/Documents";
 import Layout from "@/components/Layout";
 
-function Documents() {
+function DocumentsPage() {
   return (
     <Layout>
       <section className="flex justify-center w-full h-screen items-center">
-        <DocumentsCard />
+        <Documents />
       </section>
     </Layout>
   );
 }
 
-export default Documents;
+export default DocumentsPage;
