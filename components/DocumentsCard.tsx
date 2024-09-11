@@ -10,9 +10,15 @@ import {
 import docicon from "@/public/Vectordoc.png";
 import Image from "next/image";
 
+type Notes = {
+  kind: string;
+  mimeType: string;
+  id: string;
+  name: string;
+};
+
 async function DocumentsCard() {
   const session = (await auth()) as unknown as { token: any };
-  console.log(session?.token?.access_token);
 
   const files = await fetch("https://www.googleapis.com/drive/v3/files", {
     method: "GET",
@@ -20,6 +26,10 @@ async function DocumentsCard() {
       Authorization: `Bearer ${session?.token?.access_token}`,
     },
   }).then((res) => res.json());
+
+  const result = files.files.filter((file: Notes) =>
+    file.name.includes("Notes from")
+  );
 
   return (
     <Card className="max-w-4xl">
