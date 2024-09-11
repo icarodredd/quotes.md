@@ -21,8 +21,6 @@ async function DocumentsCard() {
     },
   }).then((res) => res.json());
 
-  console.log(files);
-
   return (
     <Card className="max-w-4xl">
       <CardHeader>

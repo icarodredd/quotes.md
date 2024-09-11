@@ -10,7 +10,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       clientSecret: process.env.GOOGLE_SECRET,
       authorization: {
         params: {
-          scope: "openid https://www.googleapis.com/auth/drive.file",
+          scope: "email profile openid https://www.googleapis.com/auth/drive",
         },
       },
     }),
