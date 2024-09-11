@@ -1,5 +1,6 @@
-import { auth } from "@/auth";
+import { auth, signOut } from "@/auth";
 import CardHub from "./CardHub";
+import { redirect } from "next/dist/server/api-utils";
 
 export type NoteType = {
   kind: string;
@@ -10,6 +11,8 @@ export type NoteType = {
 
 async function Documents() {
   const session = (await auth()) as unknown as { token: any };
+
+  if (!session.token.access_token) signOut({ redirectTo: "/" });
 
   const files = await fetch("https://www.googleapis.com/drive/v3/files", {
     method: "GET",
