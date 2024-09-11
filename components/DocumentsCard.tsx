@@ -1,3 +1,5 @@
+import { auth } from "@/auth";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -5,16 +7,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
 import docicon from "@/public/Vectordoc.png";
-import { Button } from "@/components/ui/button";
-import { auth } from "@/auth";
+import Image from "next/image";
 
 async function DocumentsCard() {
-  const session = await auth();
+  const session = (await auth()) as unknown as { token: any };
+  console.log(session?.token?.access_token);
 
   const files = await fetch("https://www.googleapis.com/drive/v3/files", {
     method: "GET",
+    headers: {
+      Authorization: `Bearer ${session?.token?.access_token}`,
+    },
   }).then((res) => res.json());
 
   console.log(files);
