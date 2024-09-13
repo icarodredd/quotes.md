@@ -11,10 +11,22 @@ import {
   CardContent,
   CardFooter,
 } from "./ui/card";
+import { useRouter } from "next/router";
+import { redirect } from "next/navigation";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-function Note({ note }: { note: NoteType }) {
+function Note({
+  note,
+  setSelected,
+}: {
+  note: NoteType;
+  setSelected: Dispatch<SetStateAction<string>>;
+}) {
   return (
-    <button className="rounded-lg p-4 hover:bg-purple/10">
+    <button
+      onClick={() => setSelected(note.id)}
+      className="rounded-lg p-4 hover:bg-purple/10"
+    >
       <div className="flex justify-center">
         <Image src={docicon} alt="doc icon" width={60} height={60} />
       </div>
@@ -24,6 +36,8 @@ function Note({ note }: { note: NoteType }) {
 }
 
 function CardHub({ result }: { result: NoteType[] }) {
+  const [selected, setSelected] = useState("");
+
   return (
     <Card className="max-w-4xl">
       <CardHeader>
@@ -35,7 +49,7 @@ function CardHub({ result }: { result: NoteType[] }) {
       <CardContent className="grid grid-cols-6 gap-4 auto-rows-max">
         {result &&
           result.map((item: NoteType) => {
-            return <Note key={item.id} note={item} />;
+            return <Note key={item.id} note={item} setSelected={setSelected} />;
           })}
       </CardContent>
       <CardFooter className="flex justify-center">
