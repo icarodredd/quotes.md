@@ -11,8 +11,6 @@ import {
   CardContent,
   CardFooter,
 } from "./ui/card";
-import { useRouter } from "next/router";
-import { redirect } from "next/navigation";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 function Note({
@@ -35,8 +33,25 @@ function Note({
   );
 }
 
-function CardHub({ result }: { result: NoteType[] }) {
+function CardHub({ result, token }: { result: NoteType[]; token: string }) {
   const [selected, setSelected] = useState("");
+
+  const handleClick = async (id: string) => {
+    if (id === "") return;
+    console.log(token);
+    await fetch(
+      `https://www.googleapis.com/drive/v3/files/${id}/export?mimeType=text/markdown`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((res) => res.text())
+      .then((data) => console.log(data))
+      .catch((e) => console.log(e.message));
+  };
 
   return (
     <Card className="max-w-4xl">
@@ -53,7 +68,7 @@ function CardHub({ result }: { result: NoteType[] }) {
           })}
       </CardContent>
       <CardFooter className="flex justify-center">
-        <Button>Submit</Button>
+        <Button onClick={() => handleClick(selected)}>Submit</Button>
       </CardFooter>
     </Card>
   );

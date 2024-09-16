@@ -41,7 +41,7 @@ async function Documents() {
     file.name.includes("Notes from")
   );
 
-  return <CardHub result={result} />;
+  return <CardHub result={result} token={session.token.access_token} />;
 }
 
 export default Documents;
