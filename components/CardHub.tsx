@@ -59,7 +59,12 @@ function CardHub({ result, token }: { result: NoteType[]; token: string }) {
       //spliting the document into an array of notes
       .then((data) => data.split("\n\n"))
 
-      .then((message) => console.log(message))
+      .then((data) =>
+        data.map(
+          (note) => new File([note], "note.md", { type: "text/markdown" })
+        )
+      )
+      .then((files) => console.log(files))
       .catch((e) => console.log(e));
   };
 
