@@ -38,7 +38,6 @@ function CardHub({ result, token }: { result: NoteType[]; token: string }) {
 
   const handleClick = async (id: string) => {
     if (id === "") return;
-    console.log(token);
     await fetch(
       `https://www.googleapis.com/drive/v3/files/${id}/export?mimeType=text/markdown`,
       {
@@ -49,8 +48,19 @@ function CardHub({ result, token }: { result: NoteType[]; token: string }) {
       }
     )
       .then((res) => res.text())
-      .then((data) => console.log(data))
-      .catch((e) => console.log(e.message));
+
+      //filtering header and footer of the documement
+      .then((data) =>
+        data.substring(
+          data.indexOf("*![][image2] ") + 13,
+          data.lastIndexOf("http://play.google.com/books/reader")
+        )
+      )
+      //spliting the document into an array of notes
+      .then((data) => data.split("\n\n"))
+
+      .then((message) => console.log(message))
+      .catch((e) => console.log(e));
   };
 
   return (
