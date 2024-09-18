@@ -12,6 +12,7 @@ import {
   CardFooter,
 } from "./ui/card";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import JSZip from "jszip";
 
 function Note({
   note,
@@ -59,10 +60,20 @@ function CardHub({ result, token }: { result: NoteType[]; token: string }) {
       //spliting the document into an array of notes
       .then((data) => data.split("\n\n"))
 
+      //creating a new file for each note
       .then((data) =>
-        data.map((note) => new File([note], "note", { type: "text/markdown" }))
+        data.map((note) => new File([note], `Note`, { type: "text/markdown" }))
       )
-      .then((files) => console.log(files))
+
+      //zipping the files in one
+      .then((files) => {
+        const zip = new JSZip();
+        files.forEach((file) => zip.file("Notes", file));
+        return zip;
+      })
+
+      .then((zip) => console.log(zip))
+
       .catch((e) => console.log(e));
   };
 
