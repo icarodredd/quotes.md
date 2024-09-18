@@ -24,6 +24,7 @@ import {
 } from "./ui/card";
 import { Dispatch, SetStateAction, useState } from "react";
 import JSZip from "jszip";
+import FileSaver from "file-saver";
 
 function Note({
   note,
@@ -47,7 +48,7 @@ function Note({
 
 function CardHub({ result, token }: { result: NoteType[]; token: string }) {
   const [selected, setSelected] = useState("");
-  const [zip, setZip] = useState<JSZip>();
+  const [zip, setZip] = useState("");
 
   const handleClick = async (id: string) => {
     if (id === "") return;
@@ -80,11 +81,10 @@ function CardHub({ result, token }: { result: NoteType[]; token: string }) {
       //zipping the files in one
       .then((files) => {
         const zip = new JSZip();
-        files.forEach((file) => zip.file("Notes", file));
-        return zip;
       })
-
-      .then((zip) => setZip(zip))
+      /* 
+      .then(async (zip) =>
+      ) */
 
       .catch((e) => console.log(e));
   };
@@ -102,8 +102,13 @@ function CardHub({ result, token }: { result: NoteType[]; token: string }) {
             return <Note key={item.id} note={item} setSelected={setSelected} />;
           })}
       </CardContent>
-      <CardFooter className="flex justify-center">
+      <CardFooter className="flex justify-center gap-4">
         <Button onClick={() => handleClick(selected)}>Submit</Button>
+        {zip && (
+          <a download={"Notes.zip"} href={zip}>
+            <Button>Download</Button>
+          </a>
+        )}
       </CardFooter>
     </Card>
   );
