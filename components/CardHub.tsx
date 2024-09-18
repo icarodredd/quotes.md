@@ -1,5 +1,16 @@
 "use client";
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { NoteType } from "./Documents";
 import { Button } from "./ui/button";
 import docicon from "../public/Vectordoc.png";
@@ -11,7 +22,7 @@ import {
   CardContent,
   CardFooter,
 } from "./ui/card";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import JSZip from "jszip";
 
 function Note({
@@ -36,6 +47,7 @@ function Note({
 
 function CardHub({ result, token }: { result: NoteType[]; token: string }) {
   const [selected, setSelected] = useState("");
+  const [zip, setZip] = useState<JSZip>();
 
   const handleClick = async (id: string) => {
     if (id === "") return;
@@ -72,7 +84,7 @@ function CardHub({ result, token }: { result: NoteType[]; token: string }) {
         return zip;
       })
 
-      .then((zip) => console.log(zip))
+      .then((zip) => setZip(zip))
 
       .catch((e) => console.log(e));
   };
@@ -80,9 +92,8 @@ function CardHub({ result, token }: { result: NoteType[]; token: string }) {
   return (
     <Card className="max-w-4xl">
       <CardHeader>
-        <CardTitle className="justify-between flex text-lg">
+        <CardTitle className="justify-center flex text-lg">
           What document do you want to send to obsidian?
-          <Button>⟳</Button>
         </CardTitle>
       </CardHeader>
       <CardContent className="grid grid-cols-6 gap-4 auto-rows-max">
