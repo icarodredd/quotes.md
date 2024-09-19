@@ -42,7 +42,7 @@ export default async function Home() {
   return (
     <Layout>
       <section>
-        <h1 className="text-4xl text-center">
+        <h1 className="text-4xl text-center max-lg:text-2xl">
           Bring highlighted texts from your e-book <br /> directly to obsidian.
         </h1>
         <div className="flex justify-center mt-12">
