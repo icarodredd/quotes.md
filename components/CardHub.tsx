@@ -25,6 +25,7 @@ import {
 import { Dispatch, SetStateAction, useState } from "react";
 import JSZip from "jszip";
 import FileSaver from "file-saver";
+import saveAs from "file-saver";
 
 function Note({
   note,
@@ -78,13 +79,15 @@ function CardHub({ result, token }: { result: NoteType[]; token: string }) {
         data.map((note) => new File([note], `Note`, { type: "text/markdown" }))
       )
 
-      //zipping the files in one
-      .then((files) => {
+      //zipping the files in one ad downloading
+      .then(async (files) => {
         const zip = new JSZip();
+        for (let i = 0; i < files.length; i++) {
+          zip.file(`note_${i}.md`, files[i]);
+        }
+        const zipBlob = await zip.generateAsync({ type: "blob" });
+        FileSaver.saveAs(zipBlob, "Notes.zip");
       })
-      /* 
-      .then(async (zip) =>
-      ) */
 
       .catch((e) => console.log(e));
   };
