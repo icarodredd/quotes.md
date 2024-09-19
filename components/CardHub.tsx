@@ -91,13 +91,13 @@ function CardHub({ result, token }: { result: NoteType[]; token: string }) {
   };
 
   return (
-    <Card className="max-w-4xl">
+    <Card className="max-w-4xl max-lg:max-w-72">
       <CardHeader>
-        <CardTitle className="justify-center flex text-lg">
+        <CardTitle className="justify-center flex text-lg text-center">
           What document do you want to send to obsidian?
         </CardTitle>
       </CardHeader>
-      <CardContent className="grid grid-cols-6 gap-4 auto-rows-max">
+      <CardContent className="grid grid-cols-6 gap-4 auto-rows-max max-lg:grid-cols-1">
         {result &&
           result.map((item: NoteType) => {
             return <Note key={item.id} note={item} setSelected={setSelected} />;
