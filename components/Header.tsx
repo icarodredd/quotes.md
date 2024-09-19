@@ -8,7 +8,7 @@ async function Header() {
 
   return (
     <header className="flex justify-between p-4 mb-4">
-      <h1 className="text-4xl">quotes.md</h1>
+      <h1 className="text-4xl max-lg:text-3xl">quotes.md</h1>
       <div className="gap-4 flex">
         {session === null ? (
           <SignIn />
@@ -16,7 +16,7 @@ async function Header() {
           <>
             <SignOut />
             <Image
-              className="rounded-full"
+              className="rounded-full max-lg:size-9"
               width={40}
               height={40}
               src={session.user?.image as string}

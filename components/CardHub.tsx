@@ -77,7 +77,7 @@ function CardHub({ result, token }: { result: NoteType[]; token: string }) {
         data.map((note) => new File([note], `Note`, { type: "text/markdown" }))
       )
 
-      //zipping the files in one ad downloading
+      //zipping the files in one and downloading
       .then(async (files) => {
         const zip = new JSZip();
         for (let i = 0; i < files.length; i++) {
