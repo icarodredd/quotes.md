@@ -25,7 +25,6 @@ import {
 import { Dispatch, SetStateAction, useState } from "react";
 import JSZip from "jszip";
 import FileSaver from "file-saver";
-import saveAs from "file-saver";
 
 function Note({
   note,
@@ -49,7 +48,6 @@ function Note({
 
 function CardHub({ result, token }: { result: NoteType[]; token: string }) {
   const [selected, setSelected] = useState("");
-  const [zip, setZip] = useState("");
 
   const handleClick = async (id: string) => {
     if (id === "") return;
@@ -107,11 +105,6 @@ function CardHub({ result, token }: { result: NoteType[]; token: string }) {
       </CardContent>
       <CardFooter className="flex justify-center gap-4">
         <Button onClick={() => handleClick(selected)}>Submit</Button>
-        {zip && (
-          <a download={"Notes.zip"} href={zip}>
-            <Button>Download</Button>
-          </a>
-        )}
       </CardFooter>
     </Card>
   );
