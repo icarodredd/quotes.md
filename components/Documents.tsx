@@ -1,4 +1,4 @@
-import { auth, signOut } from "@/auth";
+import { auth } from "@/auth";
 import CardHub from "./CardHub";
 
 export type NoteType = {

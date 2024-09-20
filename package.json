@@ -23,6 +23,7 @@
     "next": "14.2.7",
     "next-auth": "^5.0.0-beta.20",
     "react": "^18",
+    "react-devtools": "^5.3.1",
     "react-dom": "^18",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7"
