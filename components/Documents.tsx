@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+import { auth, signIn } from "@/auth";
 import CardHub from "./CardHub";
 
 export type NoteType = {
@@ -36,6 +36,8 @@ async function Documents() {
       Authorization: `Bearer ${session.token.access_token}`,
     },
   }).then((res) => res.json());
+
+  if (!files.files) await signIn();
 
   const result = files.files.filter((file: NoteType) =>
     file.name.includes("Notes from")
