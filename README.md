@@ -2,11 +2,13 @@
         
 <h1 align="center">Quotes.md</h1>
 
-<p align="center">
-        <img src="https://img.shields.io/github/last-commit/icarodredd/quotes.md?color=%237A1CAC" alt="Last Commit">
-        <img src="https://img.shields.io/github/license/icarodredd/quotes.md?style=flat&color=%237A1CAC" alt="License">
-        <img src="https://img.shields.io/github/stars/icarodredd/quotes.md?style=flat&color=%237A1CAC" alt="Stars">
-</p>
+<div align="center">
+        
+![GitHub License](https://img.shields.io/github/license/icarodredd/quotes.md?color=%237A1CAC)
+![GitHub last commit](https://img.shields.io/github/last-commit/icarodredd/quotes.md?color=%237A1CAC)
+![GitHub Repo stars](https://img.shields.io/github/stars/icarodredd/quotes.md)
+
+</div>
 
 <p align="center"><a href="https://github.com/icarodredd/quotes.md/edit/main/README.md#introduction">Introduction</a> · 
 <a href="https://github.com/icarodredd/quotes.md/edit/main/README.md#technologies">Technologies</a> · 
