@@ -16,6 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta
+        name="google-site-verification"
+        content="RM-JfmX5StMSXddp2ggzS1GyoTt6J0gSkqC025emL6U"
+      />
       <body className={`${sora.className}`}>{children}</body>
     </html>
   );
