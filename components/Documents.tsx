@@ -1,5 +1,6 @@
 import { auth, signIn } from "@/auth";
 import CardHub from "./CardHub";
+import Payment from "@/app/payment/page";
 
 export type NoteType = {
   kind: string;
@@ -44,10 +45,13 @@ async function Documents() {
   );
 
   return (
-    <CardHub
-      result={result}
-      token={session.token.access_token}
-    />
+    <>
+      <CardHub
+        result={result}
+        token={session.token.access_token}
+      />
+      <Payment />
+    </>
   );
 }
 
