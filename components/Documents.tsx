@@ -51,7 +51,7 @@ async function Documents() {
         result={result}
         token={session.token.access_token}
       />
-      <Payment />
+      {/*  <Payment /> */}
     </>
   );
 }
