@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Sora } from "next/font/google";
 import "./globals.css";
@@ -20,7 +21,10 @@ export default function RootLayout({
         name="google-site-verification"
         content="RM-JfmX5StMSXddp2ggzS1GyoTt6J0gSkqC025emL6U"
       />
-      <body className={`${sora.className}`}>{children}</body>
+      <body className={`${sora.className}`}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
