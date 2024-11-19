@@ -30,6 +30,7 @@ export type SessionAndToken = {
 
 async function Documents() {
   const session = (await auth()) as SessionAndToken;
+  if (!session) await signIn();
 
   const files = await fetch("https://www.googleapis.com/drive/v3/files", {
     method: "GET",
