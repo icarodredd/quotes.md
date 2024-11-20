@@ -28,7 +28,12 @@ function Note({
       className="rounded-lg p-4 hover:bg-purple/10"
     >
       <div className="flex justify-center">
-        <Image src={docicon} alt="doc icon" width={60} height={60} />
+        <Image
+          src={docicon}
+          alt="doc icon"
+          width={60}
+          height={60}
+        />
       </div>
       <p className="text-purple text-center text-sm mt-2">{note.name}</p>
     </button>
@@ -86,12 +91,28 @@ function CardHub({ result, token }: { result: NoteType[]; token: string }) {
           What document do you want to send to obsidian?
         </CardTitle>
       </CardHeader>
-      <CardContent className="grid grid-cols-6 gap-4 auto-rows-max max-lg:grid-cols-1">
-        {result &&
-          result.map((item: NoteType) => {
-            return <Note key={item.id} note={item} setSelected={setSelected} />;
+
+      {result.length > 0 ? (
+        <CardContent className="grid grid-cols-6 gap-4 auto-rows-max max-lg:grid-cols-1">
+          {result.map((item: NoteType) => {
+            return (
+              <Note
+                key={item.id}
+                note={item}
+                setSelected={setSelected}
+              />
+            );
           })}
-      </CardContent>
+        </CardContent>
+      ) : (
+        <CardContent className="text-center">
+          <p>You don&apos;t have a file of notes.</p>
+          <p className="text-xs mt-10">
+            Warning: For a document to appear here, it needs the prefix
+            &quot;Notes from&quot; in its name.
+          </p>
+        </CardContent>
+      )}
       <CardFooter className="flex justify-center gap-4">
         <Button onClick={() => handleClick(selected)}>Submit</Button>
       </CardFooter>
