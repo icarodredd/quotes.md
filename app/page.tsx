@@ -1,18 +1,21 @@
-import obsilogo from "@/public/obsidianlogo.png";
-import Image from "next/image";
-import Layout from "@/components/Layout";
+import obsilogo from '@/public/obsidianlogo.png';
+import Image from 'next/image';
+import Layout from '@/components/Layout';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+} from '@/components/ui/accordion';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 function AccordionHome() {
   return (
-    <Accordion type="multiple" className="min-w-60 max-w-xl">
+    <Accordion
+      type="multiple"
+      className="min-w-60 max-w-xl"
+    >
       <AccordionItem value="item-1">
         <AccordionTrigger>Why quotes.md? </AccordionTrigger>
         <AccordionContent className="font-extralight text-justify">
@@ -42,7 +45,7 @@ export default async function Home() {
   return (
     <Layout>
       <section>
-        <h1 className="text-4xl text-center max-lg:text-2xl">
+        <h1 className="text-4xl text-center max-lg:text-2xl max-lg:p-4">
           Bring highlighted texts from your e-book <br /> directly to obsidian.
         </h1>
         <div className="flex justify-center mt-12">
@@ -56,7 +59,7 @@ export default async function Home() {
           <AccordionHome />
         </div>
         <div className="flex justify-center p-8">
-          <Link href={"/documents"}>
+          <Link href={'/documents'}>
             <Button>Get Started</Button>
           </Link>
         </div>

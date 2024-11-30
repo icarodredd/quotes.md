@@ -1,6 +1,5 @@
-import { auth, signIn } from "@/auth";
-import CardHub from "./CardHub";
-import Payment from "@/app/payment/page";
+import { auth, signIn } from '@/auth';
+import CardHub from './CardHub';
 
 export type NoteType = {
   kind: string;
@@ -32,8 +31,8 @@ async function Documents() {
   const session = (await auth()) as SessionAndToken;
   if (!session) await signIn();
 
-  const files = await fetch("https://www.googleapis.com/drive/v3/files", {
-    method: "GET",
+  const files = await fetch('https://www.googleapis.com/drive/v3/files', {
+    method: 'GET',
     headers: {
       Authorization: `Bearer ${session.token.access_token}`,
     },
@@ -42,7 +41,7 @@ async function Documents() {
   if (!files.files) await signIn();
 
   const result = files.files.filter((file: NoteType) =>
-    file.name.includes("Notes from")
+    file.name.includes('Notes from')
   );
 
   return (
@@ -51,7 +50,6 @@ async function Documents() {
         result={result}
         token={session.token.access_token}
       />
-      {/*  <Payment /> */}
     </>
   );
 }
