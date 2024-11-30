@@ -25,7 +25,7 @@ function Note({
   return (
     <button
       onClick={() => setSelected(note.id)}
-      className="flex items-start rounded-lg p-4 hover:bg-purple/10"
+      className="flex items-start justify-center rounded-lg p-4 hover:bg-purple/10"
     >
       <div>
         <div className="flex justify-center">
