@@ -70,7 +70,22 @@ function CardHub({ result, token }: { result: NoteType[]; token: string }) {
 
       //creating a new file for each note
       .then((data) =>
-        data.map((note) => new File([note], `Note`, { type: 'text/markdown' }))
+        data.map((note) => {
+          //only for the first note
+          if (data.indexOf(note) === 0) {
+            const newNote = note.substring(
+              note.indexOf(''),
+              note.lastIndexOf('*')
+            );
+            return new File([newNote], `Note`, { type: 'text/markdown' });
+          } else {
+            const newNote = note.substring(
+              note.indexOf('|  ![][image2] *') + 16,
+              note.lastIndexOf('*')
+            );
+            return new File([newNote], `Note`, { type: 'text/markdown' });
+          }
+        })
       )
 
       //zipping the files in one and downloading
